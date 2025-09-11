@@ -23,9 +23,11 @@ export const useProjection = (inputs: ProjectionInputs): ProjectionDataPoint[] =
 
         const endingCustomers = startingCustomers + newCustomers - lostCustomers;
 
-        // MRR can be based on ending customers * ARPU or grown from initial MRR.
-        // Let's use ending customers * ARPU for a more dynamic model.
-        const mrr = endingCustomers * arpu;
+        // calculate MRR based on the change in customers from the previous month
+        // this ensures initialMrr is properly used as the starting point
+        const customerChange = endingCustomers - startingCustomers;
+        const mrrChange = customerChange * arpu;
+        const mrr = currentMrr + mrrChange;
         const arr = mrr * 12;
 
         projection.push({
