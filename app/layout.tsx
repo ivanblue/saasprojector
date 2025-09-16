@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+import GoogleAnalyticsPixel from '@/components/GoogleAnalyticsPixel';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -23,9 +25,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {measurementId && <GoogleAnalytics measurementId={measurementId} />}
+        {measurementId && <GoogleAnalyticsPixel measurementId={measurementId} />}
+        {children}
+      </body>
     </html>
   );
 }

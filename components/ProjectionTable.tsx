@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ProjectionDataPoint } from '@/types';
+import { trackTableView } from './GoogleAnalytics';
 
 interface ProjectionTableProps {
   data: ProjectionDataPoint[];
@@ -10,6 +11,11 @@ const formatCurrency = (value: number) => {
 };
 
 const ProjectionTable: React.FC<ProjectionTableProps> = ({ data }) => {
+  useEffect(() => {
+    // Track table view when component mounts or data changes
+    trackTableView();
+  }, [data]);
+
   return (
     <div className="overflow-x-auto max-h-96 rounded-lg border border-gray-700">
       <table className="min-w-full divide-y divide-gray-700">
