@@ -167,7 +167,10 @@ const App: React.FC = () => {
         </main>
 
         <footer className="text-center mt-12 text-gray-500 text-sm">
-          <p>Built by a world-class senior frontend React engineer.</p>
+          <div className="space-y-2">
+            <p>&copy; 2025 SaaS Projector. All rights reserved.</p>
+            <p>Contact: <a href="mailto:info@saasprojector.com" className="text-cyan-400 hover:text-cyan-300 transition-colors">info@saasprojector.com</a></p>
+          </div>
         </footer>
       </div>
     </div>
