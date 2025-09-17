@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { ProjectionDataPoint } from '@/types';
+import { trackChartView } from './GoogleAnalytics';
 
 interface ProjectionChartProps {
   data: ProjectionDataPoint[];
@@ -36,6 +37,11 @@ const CustomTooltip: React.FC<{
 };
 
 const ProjectionChart: React.FC<ProjectionChartProps> = ({ data }) => {
+  useEffect(() => {
+    // Track chart view when component mounts or data changes
+    trackChartView('projection_chart');
+  }, [data]);
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Info } from 'lucide-react';
+import { trackSliderInteraction } from './GoogleAnalytics';
 
 interface InputSliderProps {
   label: string;
@@ -16,6 +17,13 @@ const InputSlider: React.FC<InputSliderProps> = ({ label, value, onChange, min, 
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = parseFloat(e.target.value);
+    // Track slider interaction with Google Analytics
+    trackSliderInteraction(label, newValue);
+    onChange(e);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -53,7 +61,7 @@ const InputSlider: React.FC<InputSliderProps> = ({ label, value, onChange, min, 
       <input
         type="range"
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         min={min}
         max={max}
         step={step}
