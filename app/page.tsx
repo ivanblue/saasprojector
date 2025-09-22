@@ -8,7 +8,7 @@ import SummaryCard from '@/components/SummaryCard';
 import ProjectionChart from '@/components/ProjectionChart';
 import ProjectionTable from '@/components/ProjectionTable';
 
-import { Briefcase, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { Briefcase, TrendingUp, Users, DollarSign, Download } from 'lucide-react';
 
 const App: React.FC = () => {
   const [inputs, setInputs] = useState<ProjectionInputs>({
@@ -33,6 +33,48 @@ const App: React.FC = () => {
   const totalRevenue = useMemo(() => {
     return projectionData.reduce((acc, curr) => acc + curr.mrr, 0);
   }, [projectionData]);
+
+  const exportToCSV = () => {
+    if (projectionData.length === 0) return;
+
+    // Create CSV headers
+    const headers = [
+      'Month',
+      'Starting Customers',
+      'New Customers',
+      'Lost Customers',
+      'Ending Customers',
+      'MRR ($)',
+      'ARR ($)'
+    ];
+
+    // Create CSV rows
+    const csvData = projectionData.map((row) => [
+      row.month,
+      row.startingCustomers,
+      row.newCustomers,
+      row.lostCustomers,
+      row.endingCustomers,
+      row.mrr.toFixed(2),
+      row.arr.toFixed(2)
+    ]);
+
+    // Combine headers and data
+    const csvContent = [headers, ...csvData]
+      .map(row => row.map(field => `"${field}"`).join(','))
+      .join('\n');
+
+    // Create and download the file
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `saas-projection-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-200 font-sans p-4 sm:p-6 lg:p-8">
@@ -160,7 +202,16 @@ const App: React.FC = () => {
             </div>
 
             <div className="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 shadow-lg">
-              <h3 className="text-xl font-bold mb-4 text-cyan-300">Month-by-Month Breakdown</h3>
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Month-by-Month Breakdown</h3>
+                <button
+                  onClick={exportToCSV}
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  <Download size={16} />
+                  Export CSV
+                </button>
+              </div>
               <ProjectionTable data={projectionData} />
             </div>
           </div>
