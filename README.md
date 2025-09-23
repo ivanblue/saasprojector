@@ -51,7 +51,16 @@ pnpm install
 pnpm dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. Set up Google Analytics (optional):
+
+   - Create a `.env.local` file in the root directory
+   - Add your Google Analytics 4 Measurement ID:
+
+   ```
+   NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Usage
 
@@ -68,6 +77,7 @@ pnpm dev
 - **Styling**: Tailwind CSS 4.0
 - **Charts**: Recharts
 - **Icons**: Lucide React
+- **Analytics**: Google Analytics 4 with Universal Analytics fallback
 - **Package Manager**: pnpm
 
 ## Project Structure
@@ -81,7 +91,9 @@ saasprojector/
 ├── components/
 │   ├── InputSlider.tsx     # Interactive slider component
 │   ├── ProjectionChart.tsx # Revenue growth chart
-│   └── SummaryCard.tsx     # Metric display cards
+│   ├── ProjectionTable.tsx # Revenue projection table
+│   ├── SummaryCard.tsx     # Metric display cards
+│   └── GoogleAnalytics.tsx # Google Analytics 4 integration
 ├── hooks/
 │   └── useProjection.ts    # Revenue calculation logic
 ├── types.ts                # TypeScript type definitions
@@ -105,6 +117,33 @@ Display cards for key metrics with hover tooltips explaining each value.
 ### useProjection Hook
 
 Custom hook that calculates revenue projections based on input parameters.
+
+## Google Analytics Integration
+
+The application includes modern Google Analytics 4 (GA4) tracking:
+
+### Features
+
+- **Modern Tracking**: Google Analytics 4 using gtag.js (recommended approach)
+- **SaaS-Specific Events**: Tracks projection views, slider interactions, chart views, and table views
+- **Optimized Performance**: Debounced slider tracking and duplicate view prevention
+- **Error Handling**: Graceful fallbacks when tracking fails
+
+### Tracked Events
+
+- `view_projection`: When users view different projection types
+- `slider_interaction`: When users adjust input sliders (debounced)
+- `view_chart`: When users view the projection chart
+- `view_table`: When users view the projection table
+
+### Setup
+
+1. Create a Google Analytics 4 property
+2. Add your Measurement ID to `.env.local`:
+   ```
+   NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+   ```
+3. The tracking will automatically initialize when the app loads
 
 ## Customization
 
