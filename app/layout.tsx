@@ -29,10 +29,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <GoogleAdSense />
-      </head>
+      <head>{/* adSense script will be loaded in body with afterInteractive strategy */}</head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <GoogleAdSense />
         {measurementId && <GoogleAnalytics measurementId={measurementId} />}
         {children}
       </body>
