@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import GoogleAdSense from '@/components/GoogleAdSense';
+import Navigation from '@/components/Navigation';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,7 +35,17 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {measurementId && <GoogleAnalytics measurementId={measurementId} />}
-        {children}
+        <div className="min-h-screen bg-gray-900 text-gray-200 font-sans p-4 sm:p-6 lg:p-8">
+          <div className="max-w-7xl mx-auto">
+            {children}
+            <footer className="w-full mt-12 pt-6 border-t border-gray-700/50">
+              <div className="max-w-7xl mx-auto flex justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2025 SaaS Projector. All rights reserved.</p>
+                <Navigation />
+              </div>
+            </footer>
+          </div>
+        </div>
       </body>
     </html>
   );
