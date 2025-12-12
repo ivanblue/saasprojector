@@ -29,6 +29,16 @@ export default function Navigation() {
         About
       </Link>
       <Link
+        href="/guide"
+        className={`px-3 py-1 rounded-md transition-colors text-sm ${
+          currentPage === '/guide'
+            ? 'text-cyan-300 bg-cyan-900/50 font-semibold'
+            : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+        }`}
+      >
+        Guide
+      </Link>
+      <Link
         href="/contact"
         className={`px-3 py-1 rounded-md transition-colors text-sm ${
           currentPage === '/contact'
