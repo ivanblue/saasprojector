@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, TrendingUp, DollarSign, Users, Target, AlertTriangle } from 'lucide-react';
+import { BookOpen, TrendingUp, DollarSign, Users, Target, AlertTriangle, HelpCircle } from 'lucide-react';
+import Accordion from '../../components/Accordion';
 
 const GuidePage: React.FC = () => {
   return (
@@ -231,6 +232,38 @@ const GuidePage: React.FC = () => {
               </ul>
             </div>
           </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 shadow-lg">
+          <h2 className="text-2xl font-bold text-cyan-300 flex items-center mb-6">
+            <HelpCircle className="mr-3" />
+            Frequently Asked Questions (FAQ)
+          </h2>
+          <Accordion
+            items={[
+              {
+                question: 'How accurate are these SaaS projections?',
+                answer: 'Projections are models, not guarantees. They give directional insight based on your inputs but real-world results may vary.'
+              },
+              {
+                question: 'Should I use MRR or ARR for planning?',
+                answer: 'Use MRR for monthly planning and ARR for long-term financial strategy.'
+              },
+              {
+                question: 'What is a typical churn rate for SaaS?',
+                answer: 'Most SaaS businesses aim for 1%–5% monthly churn, depending on the market.'
+              },
+              {
+                question: 'How often should I update my SaaS metrics?',
+                answer: 'Ideally monthly, especially when tracking growth or preparing for fundraising.'
+              },
+              {
+                question: 'Why does small churn make such a big impact?',
+                answer: 'Churn compounds — losing even 2% of customers monthly can reduce long-term growth significantly.'
+              }
+            ]}
+          />
         </section>
       </div>
     </div>
