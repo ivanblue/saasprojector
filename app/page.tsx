@@ -8,7 +8,17 @@ import SummaryCard from '@/components/SummaryCard';
 import ProjectionChart from '@/components/ProjectionChart';
 import ProjectionTable from '@/components/ProjectionTable';
 
-import { Briefcase, TrendingUp, Users, DollarSign, Download, BookOpen, Target, AlertTriangle, HelpCircle } from 'lucide-react';
+import {
+  Briefcase,
+  TrendingUp,
+  Users,
+  DollarSign,
+  Download,
+  BookOpen,
+  Target,
+  AlertTriangle,
+  HelpCircle,
+} from 'lucide-react';
 import Accordion from '../components/Accordion';
 
 const App: React.FC = () => {
@@ -104,7 +114,7 @@ const App: React.FC = () => {
   return (
     <>
       <header className="text-left mb-10">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-400">
           SaaS Revenue Projector
         </h1>
         <p className="mt-3 text-lg text-gray-400 max-w-2xl">
@@ -230,7 +240,7 @@ const App: React.FC = () => {
               <h3 className="text-xl font-bold text-cyan-300">Month-by-Month Breakdown</h3>
               <button
                 onClick={exportToCSV}
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
               >
                 <Download size={16} />
                 Export CSV
@@ -244,11 +254,13 @@ const App: React.FC = () => {
       {/* Guide Section */}
       <div className="mt-16 pt-16 border-t border-gray-700">
         <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-400">
             ⭐ SaaS Projection Guide: Understanding Your Growth Metrics
           </h2>
           <p className="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">
-            Operating a SaaS business requires more than building a great product — you must understand the metrics that predict your revenue, growth, and long-term sustainability. Below, we break down each concept so you can get the most accurate and meaningful results from your projections.
+            Operating a SaaS business requires more than building a great product — you must understand the metrics that
+            predict your revenue, growth, and long-term sustainability. Below, we break down each concept so you can get
+            the most accurate and meaningful results from your projections.
           </p>
         </div>
 
@@ -260,7 +272,8 @@ const App: React.FC = () => {
               What Is MRR (Monthly Recurring Revenue)?
             </h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Monthly Recurring Revenue (MRR) is the lifeblood of any subscription business. It represents how much predictable revenue your SaaS generates every month.
+              Monthly Recurring Revenue (MRR) is the lifeblood of any subscription business. It represents how much
+              predictable revenue your SaaS generates every month.
             </p>
             <div className="bg-gray-900/50 p-4 rounded-lg border-l-4 border-cyan-400 mb-4">
               <strong className="text-cyan-300">Formula:</strong>
@@ -268,7 +281,9 @@ const App: React.FC = () => {
               <code className="text-green-400 font-mono">MRR = Active Customers × ARPU</code>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              Because MRR is recurring and stable, it is one of the first metrics investors evaluate. In this tool, changes in customer count, churn, ARPU, and growth rate directly impact your projected MRR curve. Even small increases in growth or reductions in churn can produce significant compounding effects over time.
+              Because MRR is recurring and stable, it is one of the first metrics investors evaluate. In this tool,
+              changes in customer count, churn, ARPU, and growth rate directly impact your projected MRR curve. Even
+              small increases in growth or reductions in churn can produce significant compounding effects over time.
             </p>
           </section>
 
@@ -279,7 +294,8 @@ const App: React.FC = () => {
               What Is ARR (Annual Recurring Revenue)?
             </h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              ARR (Annual Recurring Revenue) is simply your MRR multiplied by 12. It gives a big-picture perspective of your subscription revenue at a yearly scale.
+              ARR (Annual Recurring Revenue) is simply your MRR multiplied by 12. It gives a big-picture perspective of
+              your subscription revenue at a yearly scale.
             </p>
             <div className="bg-gray-900/50 p-4 rounded-lg border-l-4 border-cyan-400 mb-4">
               <strong className="text-cyan-300">Formula:</strong>
@@ -287,7 +303,8 @@ const App: React.FC = () => {
               <code className="text-green-400 font-mono">ARR = MRR × 12</code>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              ARR is commonly used in valuation models and financial planning. This tool automatically calculates your ARR projection so you can forecast what your business might make per year based on your inputs.
+              ARR is commonly used in valuation models and financial planning. This tool automatically calculates your
+              ARR projection so you can forecast what your business might make per year based on your inputs.
             </p>
           </section>
 
@@ -326,10 +343,12 @@ const App: React.FC = () => {
               Monthly Growth Rate Explained
             </h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Your Monthly Growth Rate represents the percentage increase in your customer base each month. It comes from marketing, word of mouth, product quality, and customer referrals.
+              Your Monthly Growth Rate represents the percentage increase in your customer base each month. It comes
+              from marketing, word of mouth, product quality, and customer referrals.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              A 5% growth rate means your customers compound by 5% every month. Even a small monthly growth rate can lead to exponential increases when projected over 12–36 months.
+              A 5% growth rate means your customers compound by 5% every month. Even a small monthly growth rate can
+              lead to exponential increases when projected over 12–36 months.
             </p>
           </section>
 
@@ -348,7 +367,8 @@ const App: React.FC = () => {
               <li>A 10% churn rate means you are losing customers faster than you can acquire them.</li>
             </ul>
             <p className="text-gray-300 leading-relaxed">
-              This tool subtracts churn from your growth to calculate net new customers, which represents true SaaS health.
+              This tool subtracts churn from your growth to calculate net new customers, which represents true SaaS
+              health.
             </p>
           </section>
 
@@ -358,9 +378,7 @@ const App: React.FC = () => {
               <BookOpen className="mr-3" />
               How the Projection Model Works
             </h3>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              Every month, the tool calculates:
-            </p>
+            <p className="text-gray-300 leading-relaxed mb-4">Every month, the tool calculates:</p>
             <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
               <li>Starting Customers</li>
               <li>New Customers (based on growth %)</li>
@@ -369,7 +387,8 @@ const App: React.FC = () => {
               <li>MRR and ARR for that month</li>
             </ul>
             <p className="text-gray-300 leading-relaxed">
-              This creates a clear picture of how your business evolves over time. You can adjust sliders to simulate different business scenarios and instantly visualize the outcome.
+              This creates a clear picture of how your business evolves over time. You can adjust sliders to simulate
+              different business scenarios and instantly visualize the outcome.
             </p>
           </section>
 
@@ -399,18 +418,14 @@ const App: React.FC = () => {
               <Target className="mr-3" />
               Real-World SaaS Example
             </h3>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              Imagine you start with:
-            </p>
+            <p className="text-gray-300 leading-relaxed mb-4">Imagine you start with:</p>
             <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
               <li>100 customers</li>
               <li>ARPU of $50</li>
               <li>5% monthly growth</li>
               <li>2% churn</li>
             </ul>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              After 36 months, your SaaS could grow to:
-            </p>
+            <p className="text-gray-300 leading-relaxed mb-4">After 36 months, your SaaS could grow to:</p>
             <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
               <li>292 customers</li>
               <li>$14,600 MRR</li>
@@ -455,7 +470,7 @@ const App: React.FC = () => {
                 <ul className="space-y-2 text-gray-300">
                   <li>• Upsell premium features</li>
                   <li>• Offer bundles</li>
-                  <li>• Create "pro" plans</li>
+                  <li>• Create &quot;pro&quot; plans</li>
                 </ul>
               </div>
 
@@ -480,24 +495,26 @@ const App: React.FC = () => {
               items={[
                 {
                   question: 'How accurate are these SaaS projections?',
-                  answer: 'Projections are models, not guarantees. They give directional insight based on your inputs but real-world results may vary.'
+                  answer:
+                    'Projections are models, not guarantees. They give directional insight based on your inputs but real-world results may vary.',
                 },
                 {
                   question: 'Should I use MRR or ARR for planning?',
-                  answer: 'Use MRR for monthly planning and ARR for long-term financial strategy.'
+                  answer: 'Use MRR for monthly planning and ARR for long-term financial strategy.',
                 },
                 {
                   question: 'What is a typical churn rate for SaaS?',
-                  answer: 'Most SaaS businesses aim for 1%–5% monthly churn, depending on the market.'
+                  answer: 'Most SaaS businesses aim for 1%–5% monthly churn, depending on the market.',
                 },
                 {
                   question: 'How often should I update my SaaS metrics?',
-                  answer: 'Ideally monthly, especially when tracking growth or preparing for fundraising.'
+                  answer: 'Ideally monthly, especially when tracking growth or preparing for fundraising.',
                 },
                 {
                   question: 'Why does small churn make such a big impact?',
-                  answer: 'Churn compounds — losing even 2% of customers monthly can reduce long-term growth significantly.'
-                }
+                  answer:
+                    'Churn compounds — losing even 2% of customers monthly can reduce long-term growth significantly.',
+                },
               ]}
             />
           </section>
